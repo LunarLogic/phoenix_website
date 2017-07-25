@@ -160,7 +160,7 @@ credentials. Use the template file, add proper credentials in it and then upload
 
 #### Performing the deployment
 
-The app is deployed to **production** by CircleCI from master branch when tests are green.
+The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/circle.yml](.circleci/circle.yml).
 
 ###### Deploying manually
 
@@ -168,36 +168,6 @@ The app is deployed to **production** by CircleCI from master branch when tests 
 BRANCH=master TARGET_SERVER=staging bin/deploy      # deploy to staging
 BRANCH=master TARGET_SERVER=production bin/deploy   # deploy to production
 ```
-
-## Continuous integration and delivery platform
-
-We use Circle CI 2.0: https://circleci.com/gh/LunarLogic/ieep.
-
-We use Docker image [wwwlunarlogicio/phoenix_test:latest](https://hub.docker.com/r/wwwlunarlogicio/phoenix_test/) to prepare test environment for Circle CI.
-You can find [Dockerfile](docker/Dockerfile) needed to build the image in [docker](docker/) directory.
-
-If you need to update dependencies inside of the docker image then you can rebuild docker image based on [Dockerfile](docker/Dockerfile):
-
-    $ cd docker
-    $ docker build --no-cache=true -t phoenix_test .
-
-    # user login: lunarlogicio (use your own account)
-    $ docker login
-
-    # Check image ID of the image you just built
-    $ docker images
-
-    # Tag the image with latest tag
-    # Note the image will be under organisation: wwwlunarlogicio
-    $ docker tag IMAGE_ID wwwlunarlogicio/phoenix_test:latest
-
-    # You can remove the old image on your machine:
-    # The old image will have TAG <none>
-    $ docker images
-    $ docker rmi IMAGE_ID
-
-    # Publish image on Docker Hub
-    $ docker push wwwlunarlogicio/phoenix_test
 
 ## Tips
 
