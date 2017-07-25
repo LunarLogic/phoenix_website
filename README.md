@@ -11,6 +11,33 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 
+## Deployment Overview
+
+To build and deploy the application, we use [edeliver](https://github.com/boldpoker/edeliver) with [distillery](https://github.com/bitwalker/distillery) build tool.
+
+Here is the overview of the deployment process:
+
+<!-- language: lang-none -->
+
+        -----------------------                                           ---------------------------
+        |                     |                                           |                         |
+        |                     | -------------- (1) build ---------------> |                         |
+        |                     |                                           |       build server      |
+        |                     | <------- (2) copy to release store ------ |                         |
+        |                     |                                           |                         |
+        |   control machine   |                                           ---------------------------
+        |                     |
+        |  (localhost /       |                                           ---------------------------
+        |         Circle CI)  |                                           |                         |
+        |                     | ------------- (3) deploy ---------------> |     target machine      |
+        |                     |                                           |                         |
+        |                     | ------ (4) restart & migrate -----------> |  (staging / production) |
+        |                     |                                           |                         |
+        -----------------------                                           ---------------------------
+
+If (1) compiling and generating the release build was successful, then (2) the release is copied from the build server to the release store.
+The release store is the `./.deliver` directory on the control machine.
+
 ## Deployment configuration
 
 Here is the list of steps you need to follow to configure a fresh Phoenix Framework app in order compile it on Build Server and later deploy to App Server.
@@ -106,11 +133,80 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
 * Create [bin/deploy](bin/deploy) with executable chmod `$ chmod a+x deploy` and update there `HOST` to your staging/production servers.
 * Create [bin/restart](bin/restart) with executable chmod `$ chmod a+x deploy`
 
+## Staging and production environments
 
+### Machines
+
+* Build server:
+  * domain: `elixir-build-server.lunarlogic.io`
+* Staging:
+  * domain: phoenix-website-staging.lunarlogic.io (this server was not provisioned. It's just example)
+* Production:
+  * domain: [phoenix-website.lunarlogic.io](https://phoenix-website.lunarlogic.io) (This is our example app, you can see it)
+
+### Credentials
+
+Ensure you have `/home/phoenix/phoenix_website/phoenix_website.config` file on the staging and production hosts.
+
+:mortar_board: We use different configurations on different deploy hosts, as described
+[here](https://github.com/boldpoker/edeliver/wiki/Use-per-host-configuration)
+(we link the `sys.config` by setting the env `LINK_SYS_CONFIG` in [.deliver/config](.deliver/config)).
+
+If you change configuration structure in [config/config.exs](config/config.exs) or [config/prod.exs](config/prod.exs),
+then you need to generate new `phoenix_website.config` file. To do so, you need to compile the application and in the compiled
+package you will find `$DELIVER_TO/$APP/releases/$VERSION/sys.config` template with `FILL_IN_HERE` instead of
+credentials. Use the template file, add proper credentials in it and then upload to staging and production hosts.
+
+
+#### Performing the deployment
+
+The app is deployed to **production** by CircleCI from master branch when tests are green.
+
+###### Deploying manually
+
+```shell
+BRANCH=master TARGET_SERVER=staging bin/deploy      # deploy to staging
+BRANCH=master TARGET_SERVER=production bin/deploy   # deploy to production
+```
+
+## Continuous integration and delivery platform
+
+We use Circle CI 2.0: https://circleci.com/gh/LunarLogic/ieep.
+
+We use Docker image [wwwlunarlogicio/phoenix_test:latest](https://hub.docker.com/r/wwwlunarlogicio/phoenix_test/) to prepare test environment for Circle CI.
+You can find [Dockerfile](docker/Dockerfile) needed to build the image in [docker](docker/) directory.
+
+If you need to update dependencies inside of the docker image then you can rebuild docker image based on [Dockerfile](docker/Dockerfile):
+
+    $ cd docker
+    $ docker build --no-cache=true -t phoenix_test .
+
+    # user login: lunarlogicio (use your own account)
+    $ docker login
+
+    # Check image ID of the image you just built
+    $ docker images
+
+    # Tag the image with latest tag
+    # Note the image will be under organisation: wwwlunarlogicio
+    $ docker tag IMAGE_ID wwwlunarlogicio/phoenix_test:latest
+
+    # You can remove the old image on your machine:
+    # The old image will have TAG <none>
+    $ docker images
+    $ docker rmi IMAGE_ID
+
+    # Publish image on Docker Hub
+    $ docker push wwwlunarlogicio/phoenix_test
 
 ## Tips
 
 * `$ mix phx.gen.secret` can generate secret that can be used for `cookie` or for `secret_key_base` in `config/prod.exs`.
+* In order to run seeds do:
+
+  ```shell
+  ssh phoenix@phoenix-website.lunarlogic.io /home/phoenix/phoenix_website/bin/phoenix_website command Elixir.PhoenixWebsite.ReleaseTasks seed
+  ```
 
 ## Learn more
 
