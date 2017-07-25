@@ -92,4 +92,4 @@ config :phoenix_website,
   # nodes in a cluster trust each other completely. Any node in the cluster can run any code on any of the other nodes.
   # This must be atom hence colon sign before value.
   # You can generate new erlang_magic_cookie with: `mix phx.gen.secret`.
-  erlang_magic_cookie: :"FILL_IN_HERE",
+  erlang_magic_cookie: :"FILL_IN_HERE"
