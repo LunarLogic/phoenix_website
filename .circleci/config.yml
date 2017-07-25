@@ -24,6 +24,8 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: mix local.rebar --force
       - run: mix local.hex --force
+      - run: npm install
+      - run: node_modules/brunch/bin/brunch build
       - run: mix deps.get
       - run: mix ecto.create
       - run: mix test
