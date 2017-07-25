@@ -30,7 +30,11 @@ end
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"rm!z`joIlVak;]t$[Dyo$?D8Mu)/H,by9YjAQ/qIJ1(fS.]d(dI@Cu&{P>S%NI5J"
+  set cookie: Application.fetch_env!(:ieep, :erlang_magic_cookie)
+  set commands: [
+    "seed": "rel/commands/seed.sh",
+  ]
+  plugin Releases.Plugin.LinkConfig
 end
 
 # You may define one or more releases in this file.
