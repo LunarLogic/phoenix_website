@@ -54,14 +54,14 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
 * Generate a new [rel/config.exs](rel/config.exs) file with `$ mix release.init`. You can learn more here if you like https://hexdocs.pm/distillery/getting-started.html
 * Add [lib/phoenix_website/release_tasks.ex](lib/phoenix_website/release_tasks.ex) file to the repo and ensure the module name is relevant to your app `PhoenixWebsite` and the atoms mentioned in the code for it as well `:phoenix_website`.
 * Add [rel/commands/seed.sh](rel/commands/seed.sh) and set executable chmod for it `$ chmod a+x rel/commands/seed.sh`.
-* In [rel/config.exs](rel/config.exs) file we should read Erlang Cookie from ENV and add seed command with plugin LinkConfig.
+* In [rel/config.exs](rel/config.exs) file we should add seed command with plugin `LinkConfig`.
 
   ```elixir
   environment :prod do
     set include_erts: true
     set include_src: false
-    # add below 3 lines instead of fixed cookie
-    set cookie: Application.fetch_env!(:phoenix_website, :erlang_magic_cookie)
+    set cookie: :"rm!z`joIlVak;]t$[Dyo$?D8Mu)/H,by9YjAQ/qIJ1(fS.]d(dI@Cu&{P>S%NI5J"
+    # add below 2 lines
     set commands: [
       "seed": "rel/commands/seed.sh",
     ]

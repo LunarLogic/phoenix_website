@@ -30,7 +30,7 @@ end
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: Application.fetch_env!(:phoenix_website, :erlang_magic_cookie)
+  set cookie: :"rm!z`joIlVak;]t$[Dyo$?D8Mu)/H,by9YjAQ/qIJ1(fS.]d(dI@Cu&{P>S%NI5J"
   set commands: [
     "seed": "rel/commands/seed.sh",
   ]

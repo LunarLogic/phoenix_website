@@ -85,11 +85,3 @@ config :phoenix_website, PhoenixWebsite.Repo,
   password: "FILL_IN_HERE",
   database: "FILL_IN_HERE",
   pool_size: 15
-
-config :phoenix_website,
-  # Nodes connecting to each other are required to prove that they possess a shared secret, called a "cookie". This is
-  # mostly aimed at ensuring that different Erlang clusters on the same network don't accidentally merge. All Erlang
-  # nodes in a cluster trust each other completely. Any node in the cluster can run any code on any of the other nodes.
-  # This must be atom hence colon sign before value.
-  # You can generate new erlang_magic_cookie with: `mix phx.gen.secret`.
-  erlang_magic_cookie: :"FILL_IN_HERE"
