@@ -182,6 +182,18 @@ BRANCH=master TARGET_SERVER=production bin/deploy   # deploy to production
   ```shell
   ssh phoenix@phoenix-website.lunarlogic.io /home/phoenix/phoenix_website/bin/phoenix_website command Elixir.PhoenixWebsite.ReleaseTasks seed
   ```
+* How to check logs on App Server
+
+  ```shell
+  $ ssh admin@phoenix-website.lunarlogic.io
+
+  # logs for systemd phoenix_website service
+  $ sudo journalctl -u phoenix_website
+
+  # check nginx errors log
+  $ sudo tail -f /var/log/nginx/error.log
+  ```
+
 
 ## Learn more
 
