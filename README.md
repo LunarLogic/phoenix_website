@@ -160,7 +160,7 @@ credentials. Use the template file, add proper credentials in it and then upload
 
 #### Performing the deployment
 
-The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/circle.yml](/.circleci/circle.yml).
+The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/circle.yml](./.circleci/circle.yml).
 
 ###### Deploying manually
 
