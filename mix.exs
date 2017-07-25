@@ -20,7 +20,12 @@ defmodule PhoenixWebsite.Mixfile do
   def application do
     [
       mod: {PhoenixWebsite.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        # Add edeliver to the END of the list
+        :edeliver,
+      ]
     ]
   end
 
@@ -41,6 +46,7 @@ defmodule PhoenixWebsite.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:edeliver, "~> 1.4.3"},
       {:distillery, "~> 1.4", runtime: false},
     ]
   end
