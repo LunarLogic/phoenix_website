@@ -34,6 +34,7 @@ environment :prod do
   set commands: [
     "seed": "rel/commands/seed.sh",
   ]
+  # https://github.com/edeliver/edeliver/wiki/Use-per-host-configuration#linking-with-distillery
   plugin Releases.Plugin.LinkConfig
 end
 

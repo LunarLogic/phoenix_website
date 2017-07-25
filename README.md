@@ -65,6 +65,7 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
     set commands: [
       "seed": "rel/commands/seed.sh",
     ]
+    # https://github.com/edeliver/edeliver/wiki/Use-per-host-configuration#linking-with-distillery
     plugin Releases.Plugin.LinkConfig
   end
   ```
