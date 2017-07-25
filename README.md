@@ -36,7 +36,7 @@ Here is the overview of the deployment process:
         -----------------------                                           ---------------------------
 
 If (1) compiling and generating the release build was successful, then (2) the release is copied from the build server to the release store.
-The release store is the `./.deliver` directory on the control machine.
+The release store is the `./.deliver/releases` directory on the control machine.
 
 ## Deployment configuration
 
