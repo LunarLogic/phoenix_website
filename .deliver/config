@@ -31,9 +31,13 @@ pre_erlang_get_and_update_deps() {
 
       mix deps.get
 
+      cd '$BUILD_AT/assets'
+
       npm install
 
       $BUILD_AT/assets/node_modules/.bin/brunch build --production
+
+      cd '$BUILD_AT'
 
       APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
     "
