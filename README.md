@@ -140,7 +140,7 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
 * Build server:
   * domain: `elixir-build-server.lunarlogic.io`
 * Staging:
-  * domain: phoenix-website-staging.lunarlogic.io (this server was not provisioned. It's just example)
+  * domain: `phoenix-website-staging.lunarlogic.io` (this server was not provisioned. It's just example)
 * Production:
   * domain: [phoenix-website.lunarlogic.io](https://phoenix-website.lunarlogic.io) (This is our example app, you can see it)
 
@@ -160,7 +160,7 @@ credentials. Use the template file, add proper credentials in it and then upload
 
 #### Performing the deployment
 
-The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/circle.yml](.circleci/circle.yml).
+The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/circle.yml](/.circleci/circle.yml).
 
 ###### Deploying manually
 
