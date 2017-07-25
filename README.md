@@ -97,9 +97,12 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
   ```
 
 * Add in `.gitignore` the line `.deliver/releases/`.
-* Add at the very end of the [config/prod.exs](config/prod.exs) file:
+* Add at the very end of the [config/prod.exs](config/prod.exs) file and ensure the `import_config "prod.secret.exs"` is comment out:
 
   ```elixir
+  # NOTE: this should be commented because we don't use it
+  # import_config "prod.secret.exs"
+
   # We don't want to use prod.secret.exs
   #
   # Instead we will compile the keys but with example values FILL_IN_HERE
