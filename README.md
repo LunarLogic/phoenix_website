@@ -156,7 +156,7 @@ Ensure you have `/home/phoenix/phoenix_website/phoenix_website.config` file on t
 (we link the `sys.config` by setting the env `LINK_SYS_CONFIG` in [.deliver/config](.deliver/config)).
 
 If you change configuration structure in [config/config.exs](config/config.exs) or [config/prod.exs](config/prod.exs),
-then you need to generate new `phoenix_website.config` file. To do so, you need to compile the application and in the compiled
+then you need to generate new `phoenix_website.config` file. To do so, you need to compile the application `$ mix edeliver build release --branch=master --verbose` and in the compiled
 package you will find `$DELIVER_TO/$APP/releases/$VERSION/sys.config` template with `FILL_IN_HERE` instead of
 credentials. Use the template file, add proper credentials in it and then upload to staging and production hosts.
 
