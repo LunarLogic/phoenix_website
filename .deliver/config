@@ -26,16 +26,16 @@ pre_erlang_get_and_update_deps() {
 
       cd '$BUILD_AT'
 
-      # required by the phoenix.digest task
+      # required by the phx.digest task
       mkdir -p priv/static
 
       mix deps.get
 
       npm install
 
-      $BUILD_AT/node_modules/.bin/brunch build --production
+      $BUILD_AT/assets/node_modules/.bin/brunch build --production
 
-      APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phoenix.digest $SILENCE
+      APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
     "
   fi
 }
