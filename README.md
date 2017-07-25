@@ -171,7 +171,7 @@ BRANCH=master TARGET_SERVER=production bin/deploy   # deploy to production
 
 ## Tips
 
-* `$ mix phx.gen.secret` can generate secret that can be used for `cookie` or for `secret_key_base` in `config/prod.exs`.
+* `$ mix phx.gen.secret` can generate secret that can be used for `erlang_magic_cookie` or for `secret_key_base` in `config/prod.exs`.
 * In order to run seeds do:
 
   ```shell
