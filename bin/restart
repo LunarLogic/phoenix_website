@@ -1,4 +1,4 @@
 #!/bin/bash
 USERNAME="$1"
 HOST="$2"
-ssh $USERNAME@$HOST sudo systemctl restart ieep
+ssh $USERNAME@$HOST sudo systemctl restart phoenix_website

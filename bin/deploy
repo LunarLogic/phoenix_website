@@ -8,7 +8,7 @@ mix edeliver deploy release to $TARGET_SERVER --verbose
 # Restarting the app through edeliver:
 # `mix edeliver restart $TARGET_SERVER --verbose`
 # It does not use systemd for restarting the app process. It seems it executes more or less this on the server:
-# `/home/ieep/ieep/bin/ieep stop && /home/ieep/ieep/bin/ieep start`
+# `/home/phoenix/phoenix_website/bin/phoenix_website stop && /home/phoenix/phoenix_website/bin/phoenix_website start`
 #
 # We want to restart the app through systemd. So, we do not use edevliver for restarting the app.
 # Probably it would be good to find a better solution that uses edeliver for this task, so we wouldn't need to hardcode
