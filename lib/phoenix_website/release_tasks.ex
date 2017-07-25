@@ -17,14 +17,6 @@ defmodule PhoenixWebsite.ReleaseTasks do
     run_seed_file("seeds")
   end
 
-  def sample_dev_seeds do
-    run_seed_file("sample_dev_seeds")
-  end
-
-  def import_production_data do
-    run_seed_file("import_production_data")
-  end
-
   def run_seed_file(seed_file_name) do
     IO.puts "Loading myapp.."
     # Load the code for myapp, but don't start it
