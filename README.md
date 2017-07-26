@@ -43,6 +43,8 @@ The release store is the `./.deliver/releases` directory on the control machine.
 Here is the list of steps you need to follow to configure a fresh Phoenix Framework app in order compile it on Build Server and later deploy to App Server.
 You can find here relevant [Ansible playbooks to provision Build Server and App Server](https://github.com/LunarLogic/ansible-elixir-playbooks).
 
+Here you will find all [code changes in this repo necessary to make deployment work](https://github.com/LunarLogic/phoenix_website/compare/phoenix-framework-v1.3.0-rc2-new-app...master).
+
 * Add [distillery](https://github.com/bitwalker/distillery) (release manager) in `mix.exs` and run `$ mix deps.get`.
 
   ```elixir
