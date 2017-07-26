@@ -73,20 +73,6 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
 * Add [edelivery](https://github.com/edeliver/edeliver) (build and deploy Elixir app) in `mix.exs` and run `$ mix deps.get`.
 
   ```elixir
-  def application do
-    [
-      mod: {PhoenixWebsite.Application, []},
-      extra_applications: [
-        :logger,
-        :runtime_tools,
-        # Add edeliver to the END of the list
-        :edeliver,
-      ]
-    ]
-  end
-  ```
-
-  ```elixir
   defp deps do
     [
       ...

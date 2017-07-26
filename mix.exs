@@ -23,8 +23,6 @@ defmodule PhoenixWebsite.Mixfile do
       extra_applications: [
         :logger,
         :runtime_tools,
-        # Add edeliver to the END of the list
-        :edeliver,
       ]
     ]
   end
