@@ -157,6 +157,10 @@ Please read comment above the line `LINK_SYS_CONFIG="$DELIVER_TO/$APP/$APP.confi
 
 The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/config.yml](.circleci/config.yml).
 
+You can see example builds here:
+
+[![CircleCI](https://circleci.com/gh/LunarLogic/phoenix_website/tree/master.svg?style=svg)](https://circleci.com/gh/LunarLogic/phoenix_website/tree/master)
+
 ###### Deploying manually
 
 ```shell
