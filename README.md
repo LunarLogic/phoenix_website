@@ -193,7 +193,21 @@ BRANCH=master TARGET_SERVER=production bin/deploy   # deploy to production
   # check nginx errors log
   $ sudo tail -f /var/log/nginx/error.log
   ```
+* How to start Phoenix Console:
 
+  ```shell
+  $ ssh admin@phoenix-website.lunarlogic.io
+  $ sudo su phoenix
+  $ cd /home/phoenix/phoenix_website
+  $ MIX_ENV=prod bin/phoenix_website console
+  ```
+
+* How to check logs for the Phoenix service:
+
+  ```shell
+  # -f will tail the logs
+  $ sudo journalctl -f -u phoenix_website
+  ```
 
 ## Learn more
 
