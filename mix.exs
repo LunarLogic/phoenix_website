@@ -23,7 +23,6 @@ defmodule PhoenixWebsite.Mixfile do
       extra_applications: [
         :logger,
         :runtime_tools,
-        :cowboy,
       ]
     ]
   end
