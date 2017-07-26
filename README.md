@@ -84,7 +84,9 @@ You can find here relevant [Ansible playbooks to provision Build Server and App 
   ```
 
 * Add in `.gitignore` the line `.deliver/releases/`.
-* Add at the very end of the [config/prod.exs](config/prod.exs) file and ensure the `import_config "prod.secret.exs"` is comment out:
+* In [config/prod.exs](config/prod.exs) ensure the `# import_config "prod.secret.exs"` is comment out. We don't want to load `prod.secret.exs`.
+* In [config/prod.exs](config/prod.exs) ensure the `config :phoenix_website, PhoenixWebsiteWeb.Endpoint, server: true` is uncommented.
+* Add at the very end of the [config/prod.exs](config/prod.exs) file:
 
   ```elixir
   # NOTE: this should be commented because we don't use it
