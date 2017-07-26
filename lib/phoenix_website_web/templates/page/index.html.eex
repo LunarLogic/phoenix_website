@@ -1,6 +1,9 @@
 <div class="jumbotron">
   <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <p>This is an example app based on Phoenix Framework 1.3.0-rc2. You can find source code and instructions <a href="https://github.com/LunarLogic/phoenix_website">how to configure deployment with distillery and edeliver for Phoenix Framework</a>.</p>
+  <p>Here you will find <a href="https://github.com/LunarLogic/ansible-elixir-playbooks">Ansible Playbooks to provision Elixir Build Server and App Server</a> where the app is deployed.</p>
+  <p>This tutorial was prepared by our awesome developers from <a href="https://lunarlogic.io">Lunar Logic</a>. We do Elixir, Ruby, Javascript and more!</p>
 </div>
 
 <div class="row marketing">
