@@ -45,8 +45,8 @@ end
 
 release :phoenix_website do
   set version: current_version(:phoenix_website)
-  set applications: [
-    :runtime_tools
-  ]
+  #set applications: [
+    #:runtime_tools
+  #]
 end
 
