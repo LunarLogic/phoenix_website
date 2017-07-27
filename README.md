@@ -153,6 +153,38 @@ credentials. Use the template file, add proper credentials in it and then upload
 
 Please read comment above the line `LINK_SYS_CONFIG="$DELIVER_TO/$APP/$APP.config"` in the file [.deliver/config](.deliver/config) to see what steps to follow to achieave that.
 
+You can also find here compiled config `phoenix_website.config` and you could use it exactly for this application. Remember to change `FILL_IN_HERE` to your credentials.
+
+```erlang
+[{sasl,[{errlog_type,error}]},
+ {logger,
+     [{console,
+          [{format,<<"$time $metadata[$level] $message\n">>},
+           {metadata,[request_id]}]},
+      {level,info}]},
+ {phoenix_website,
+     [{ecto_repos,['Elixir.PhoenixWebsite.Repo']},
+      {'Elixir.PhoenixWebsiteWeb.Endpoint',
+          [{render_errors,
+               [{view,'Elixir.PhoenixWebsiteWeb.ErrorView'},
+                {accepts,[<<"html">>,<<"json">>]}]},
+           {pubsub,
+               [{name,'Elixir.PhoenixWebsite.PubSub'},
+                {adapter,'Elixir.Phoenix.PubSub.PG2'}]},
+           {load_from_system_env,false},
+           {url,[{host,<<"example.com">>},{port,80}]},
+           {cache_static_manifest,<<"priv/static/cache_manifest.json">>},
+           {server,true},
+           {secret_key_base,<<"FILL_IN_HERE">>},
+           {http,[{port,8888}]}]},
+      {'Elixir.PhoenixWebsite.Repo',
+          [{adapter,'Elixir.Ecto.Adapters.Postgres'},
+           {username,<<"FILL_IN_HERE">>},
+           {password,<<"FILL_IN_HERE">>},
+           {database,<<"FILL_IN_HERE">>},
+           {pool_size,15}]}]}].
+```
+
 #### Performing the deployment
 
 The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/config.yml](.circleci/config.yml).
