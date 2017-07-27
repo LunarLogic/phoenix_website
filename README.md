@@ -183,7 +183,7 @@ You can also find here compiled config `phoenix_website.config` and you could us
            {pool_size,15}]}]}].
 ```
 
-#### Performing the deployment
+### Performing the deployment
 
 The app is deployed to **production** by CircleCI from master branch when tests are green. You can see deployment configuration in [.circleci/config.yml](.circleci/config.yml).
 
@@ -191,7 +191,7 @@ You can see example builds here:
 
 [![CircleCI](https://circleci.com/gh/LunarLogic/phoenix_website/tree/master.svg?style=svg)](https://circleci.com/gh/LunarLogic/phoenix_website/tree/master)
 
-###### Deploying manually
+##### Deploying manually
 
 ```shell
 BRANCH=master TARGET_SERVER=staging bin/deploy      # deploy to staging
