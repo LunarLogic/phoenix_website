@@ -9,8 +9,6 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
 ## Deployment Overview
 
 To build and deploy the application, we use [edeliver](https://github.com/boldpoker/edeliver) with [distillery](https://github.com/bitwalker/distillery) build tool.
