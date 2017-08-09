@@ -70,7 +70,7 @@ Here you will find all [code changes in this repo necessary to make deployment w
   end
   ```
 
-* Add [edelivery](https://github.com/edeliver/edeliver) (build and deploy Elixir app) in `mix.exs` and run `$ mix deps.get`.
+* Add [edeliver](https://github.com/edeliver/edeliver) (build and deploy Elixir app) in `mix.exs` and run `$ mix deps.get`.
 
   ```elixir
   defp deps do
